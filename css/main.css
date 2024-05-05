@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  color: white!important;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins';
+  background: url('../images/background/vinilo2.jpg');
+  background-size: cover;
+  height: 100%;
+}
+
+.azul-oscuro {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.card, nav, footer, .input-group-text {
+  backdrop-filter: blur(0.25rem);
+  background-color: rgba(95, 95, 95, 0.15)!important;
+}
+
+.admin {
+  backdrop-filter: blur(0.2rem);
+  background-color: rgba(212, 30, 30, 0.219)!important;
+}
+
+input, .progress, button, th, td {
+  backdrop-filter: blur(1rem);
+  background-color: rgba(177, 167, 165, 0.3)!important;
+}
+
+.boton-amarillo {
+  backdrop-filter: blur(1rem);
+  background-color: rgba(240, 207, 23, 0.4)!important;
+}
+
+.input-group-text, .form-control {
+  border: 0.1 solid black;
+  border-color: rgba(0, 0, 0, 0);
+}
+
+.alert {
+  background-color: rgba(255, 62, 62, 0.3)!important;
+  border-color: rgb(168, 44, 44);
+  color: rgb(68, 0, 0);
+}
+
+button:hover, input:hover, input:focus {
+  color: white!important;
+  background-color: rgba(225, 225, 225, 0.4)!important;
+  backdrop-filter: blur(2rem);
+  transition: 0.5s;
+  transform: scale(1.005);
+}
+
+.boton-amarillo:hover {
+  color: white!important;
+  background-color: rgba(240, 207, 23, 0.644)!important;
+  backdrop-filter: blur(2rem);
+  transition: 0.5s;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.733);
+}
+
+.card {
+  border-radius: 10px;
+}
+
+th, td {
+  border: 2px solid transparent;
+  border-radius: 7px;
+}
+
+tr:nth-child(odd):not(thead > tr) {
+  background-color: rgba(139, 139, 139, 0.534)!important;
+}
+
+th {
+  justify-content: center;
+}
+
+.btn-azul {
+  background-color: rgba(32, 59, 211, 0.274) !important;
+  backdrop-filter: blur(0.2rem);
+}
+
+.btn-rojo {
+  background-color: rgba(211, 32, 32, 0.274) !important;
+  backdrop-filter: blur(0.2rem);
+}
+
+.table {
+  margin-bottom: 100px;
+}
+
+a.active {
+  opacity: 0.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+.carousel {
+  width: 400px;
+}
+
+@media screen and (max-width: 767px) {
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 140%;
+  }
+}
