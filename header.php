@@ -35,7 +35,12 @@
 					<?php if (isset($_SESSION['user']) && $_SESSION['user']['rol'] == true): ?>
 						<li class="nav-item">
 							<a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'users.php' ? 'active' : '' ?>" href="users.php">
-								Panel de administrador
+								Panel de administrador de usuarios
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'records.php' ? 'active' : '' ?>" href="records.php">
+								Panel de administrador de discos
 							</a>
 						</li>
 					<?php endif; ?>

@@ -36,6 +36,12 @@ if (!isset($_SESSION['user'])) {
 
                 <h1>Bienvenido <?= $_SESSION['user']['username'] ?></h1>
 
+                <a href="addRecord.php?userId=<?= $_SESSION['user']['id'] ?>" class="col-5">
+					<button data-mdb-ripple-init type="button" class="btn btn-outline-light btn-rounded">
+						AÑADIR UN DISCO NUEVO
+          			</button>
+				</a>
+
             </div>
         </div>
     </main>
