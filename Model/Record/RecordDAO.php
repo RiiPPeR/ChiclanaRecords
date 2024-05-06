@@ -46,10 +46,10 @@ class RecordDAO {
         return $records;
     }
 
-    public function getRecordsByUsername($id) {
+    public function getRecordsById($id) {
         $records = array();
 
-        $sql = "SELECT * FROM " . Database::$table_prefix . "records LEFT JOIN " . Database::$table_prefix . "usuarios ON userId='$id'";
+        $sql = "SELECT * FROM " . Database::$table_prefix . "records WHERE userId='$id'";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {

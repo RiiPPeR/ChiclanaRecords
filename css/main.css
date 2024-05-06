@@ -13,6 +13,7 @@ body {
   font-family: 'Poppins';
   background: url('../images/background/vinilo2.jpg');
   background-size: cover;
+  background-attachment: fixed;
   height: 100%;
 }
 
@@ -111,6 +112,10 @@ a {
 
 .carousel {
   width: 400px;
+}
+
+article {
+  border-radius: 100px!important;
 }
 
 @media screen and (max-width: 767px) {
