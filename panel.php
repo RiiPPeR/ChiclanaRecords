@@ -25,11 +25,6 @@ $records = $recordDAO->getRecordsById($_SESSION['user']['id']);
     <script type="text/javascript" src="javascript/script.js"></script>
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <style>
-        body {
-            height: 110%;
-        }
-    </style>
 </head>
 
 <body>
@@ -37,11 +32,11 @@ $records = $recordDAO->getRecordsById($_SESSION['user']['id']);
     <?php include 'header.php' ?>
 
     <main>
-        <div class="container mt-5">
+        <div class="container mt-3">
             <div class="row">
 
-                <h1>Bienvenido <?= $_SESSION['user']['username'] ?></h1>
-                <p>Aquí puedes ver tu panel de usuario donde podrás añadir nuevos discos a tu colección.</p>
+                <h1>Bienvenido, @<?= $_SESSION['user']['username'] ?></h1>
+                <p>Aquí podrás añadir nuevos discos a tu coleccion para que otros usuarios los puedan ver.</p>
 
                 <a href="addRecord.php?userId=<?= $_SESSION['user']['id'] ?>" class="col-5">
                     <button data-mdb-ripple-init type="button" class="btn btn-outline-light btn-rounded">
@@ -68,6 +63,11 @@ $records = $recordDAO->getRecordsById($_SESSION['user']['id']);
                                         <i class="bi bi-star-fill"></i>
                                     </span>
                                 <?php endfor; ?>
+                                <?php for ($i = 5; $i > $record->rating; $i--) : ?>
+                                    <span class="me-3">
+                                    <i class="bi bi-star"></i>
+                                    </span>
+                                <?php endfor; ?>
                             </span>
                             <p><?= $record->tags ?></p>
                         </span>
@@ -75,7 +75,7 @@ $records = $recordDAO->getRecordsById($_SESSION['user']['id']);
                             <p><?= $record->description ?></p>
                         </span>
                         <span class="col-2 d-flex flex-column justify-content-around align-items-center">
-                            <a class="btn btn-primary btn-azul" href="modifiyRecord.php?id=<?= $record->id ?>">
+                            <a class="btn btn-primary btn-azul" href="modifyRecord.php?id=<?= $record->id ?>">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
                             <a class="btn btn-danger btn-rojo" href="deleteRecord.php?id=<?= $record->id ?>">

@@ -1,4 +1,4 @@
-<footer class="text-center text-white fixed-bottom ">
+<footer class="text-center text-white <?php echo basename($_SERVER['PHP_SELF']) == 'panel.php' ? 'mt-5' : 'fixed-bottom' ?>">
     <div class="container p-4 pb-0">
       <section class="">
         <p class="d-flex justify-content-center align-items-center">

@@ -62,4 +62,36 @@ class RecordDAO {
 
         return $records;
     }
+
+    public function getRecordById($id) {
+        $sql = "SELECT * FROM " . Database::$table_prefix . "records WHERE id='$id'";
+        $result = $this->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $record = new Record($row['id'], $row['name'], $row['author'], $row['releaseDate'], $row['label'], $row['description'], $row['image'], $row['tags'], $row['rating'], $row['userId']);
+
+                return $record;
+            }
+        }
+
+        return null;
+    }
+
+    public function updateRecord(Record $record) {
+        $id = $record->id;
+        $name = $record->name;
+        $author = $record->author;
+        $releaseDate = $record->releaseDate;
+        $label = $record->label;
+        $description = $record->description;
+        $image = $record->image;
+        $tags = $record->tags;
+        $rating = $record->rating;
+        $userId = $record->userId;
+
+        $sql = "UPDATE " . Database::$table_prefix . "records SET name='$name', author='$author', releaseDate='$releaseDate', label='$label', description='$description', image='$image', target='$tags', rating='$rating', userId='$userId' WHERE id='$id'";
+
+        $this->conn->query($sql);
+    }
 }

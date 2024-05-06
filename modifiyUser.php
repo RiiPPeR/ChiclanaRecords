@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
 	$userDAO = new UserDAO();
 
 	$user = new User($id, $name, $surname, $email, $hashed_password, $username, $rol);
-	$userDAO->updateUser($user);
+	$userDAO->updateUserNoPass($user);
 
 	header('Location: users.php');
 	exit();

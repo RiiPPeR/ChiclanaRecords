@@ -69,7 +69,7 @@ if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
                             <td><?= $record->author ?></td>
                             <td><?= $record->releaseDate ?></td>
                             <td><?= $record->description ?></td>
-                            <td><?= $record->image ?></td>
+                            <td><img src="<?= $record->image ?>" height="100" width="100"></td>
                             <td><?= $record->tags ?></td>
                             <td><?= $record->rating ?></td>
                             <td><?= $record->userId ?></td>
