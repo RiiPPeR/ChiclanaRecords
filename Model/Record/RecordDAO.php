@@ -90,7 +90,7 @@ class RecordDAO {
         $rating = $record->rating;
         $userId = $record->userId;
 
-        $sql = "UPDATE " . Database::$table_prefix . "records SET name='$name', author='$author', releaseDate='$releaseDate', label='$label', description='$description', image='$image', target='$tags', rating='$rating', userId='$userId' WHERE id='$id'";
+        $sql = "UPDATE " . Database::$table_prefix . "records SET name='$name', author='$author', releaseDate='$releaseDate', label='$label', description='$description', image='$image', tags='$tags', rating='$rating', userId='$userId' WHERE id='$id'";
 
         $this->conn->query($sql);
     }

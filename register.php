@@ -46,7 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			//echo "Ese usuario ya existe." . $e->getMessage();
 		} else {
-			echo "An error ocurred: " . $e->getMessage();
+			echo "Ha ocurrido un error: " . $e->getMessage();
+			exit();
 		}
 	}
 }
