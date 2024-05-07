@@ -4,11 +4,11 @@ session_start();
 include './Model/Record/Record.php';
 include './Model/Record/RecordDAO.php';
 
+$targetDir = './uploads/';
+
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
 }
-
-// comprobar que el userId = id del usuario o que sea administrador
 
 $recordDAO = new RecordDAO();
 $record = null;
@@ -24,14 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST)) {
+    $id = $_POST['id'];
     $name = $_POST['name'];
     $author = $_POST['author'];
     $releaseDate = $_POST['releaseDate'];
     $label = $_POST['label'];
     $description = $_POST['description'];
+    $targetFilePath = $_POST['imageOld'];
     $tags = $_POST['tags'];
     $rating = null;
-    $targetFilePath = null;
 
     if (isset($_POST['rating'])) {
         $serializedRating = serialize($_POST['rating']);
@@ -39,33 +40,29 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
         $rating = $unserializeRating[0];
     }
 
-    if (!isset($_POST['image'])) {
-        $image = $record->image;
-    } else {
-        if (!empty($_FILES["image"]["name"])) {
-            $filename = basename($_FILES['image']['name']);
-            $targetFilePath = $targetDir . $filename;
-            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+    if (!empty($_FILES["image"]["name"])) {
+        if (!unlink($targetFilePath)) { 
+            echo ("$targetFilePath no se ha podido borrar");
+            exit(); 
+        }  
+        $filename = basename($_FILES['image']['name']);
+        $targetFilePath = $targetDir . $filename;
+        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-            echo "$targetFilePath";
-
-            // solo jpeg png y jpg
-            $allowTypes = array("jpg", "png", "jpeg", "webp");
-            if (in_array($fileType, $allowTypes)) {
-                // subida de la foto al servido
-                move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath);
-            } else {
-                echo "El archivo es de una extensión no permitida.";
-            }
+        // solo jpeg png y jpg
+        $allowTypes = array("jpg", "png", "jpeg", "webp");
+        if (in_array($fileType, $allowTypes)) {
+            // subida de la foto al servido
+            move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath);
         } else {
-            echo "La imagen no se ha podido subir: " . $_FILES['image']['error'];
+            echo "El archivo es de una extensión no permitida.";
+            exit();
         }
-    }
+    } 
 
-    $recordDAO->updateRecord(new Record($id, $name, $author, $releaseDate, $label, $description, $image, $tags, $rating, $_SESSION['user']['id']));
+    $recordDAO->updateRecord(new Record($id, $name, $author, $releaseDate, $label, $description, $targetFilePath, $tags, $rating, $_SESSION['user']['id']));
 
     header('Location: panel.php');
-    exit();
 }
 
 ?>
@@ -113,6 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
                                         </svg></span>
                                     <input type="text" id="name" name="name" class="form-control"
                                         placeholder="Nombre del disco" value="<?= $record->name ?>" required />
+                                    <input hidden readonly type="text" id="id" name="id" value="<?= $record->id ?>"/>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 ps-md-0 mt-3 mt-md-0">
@@ -173,8 +171,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
                                         <path
                                             d="M14 14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zM4 1a1 1 0 0 0-1 1v10l2.224-2.224a.5.5 0 0 1 .61-.075L8 11l2.157-3.02a.5.5 0 0 1 .76-.063L13 10V4.5h-2A1.5 1.5 0 0 1 9.5 3V1z" />
                                     </svg></span>
-                                <input type="file" id="image" name="image" class="form-control"
-                                    placeholder="Nombre del disco" />
+                                <input type="file" id="image" name="image" class="form-control" placeholder="Nombre del disco" />
+                                <input hidden readonly type="text" id="imageOld" name="imageOld" value="<?= $record->image ?>"/>
                             </div>
                         </div>
                         <div class="row mt-3">

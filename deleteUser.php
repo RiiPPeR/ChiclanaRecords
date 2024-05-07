@@ -31,6 +31,7 @@ if (isset($_POST['btn-delete'])) {
         exit();
     } else {
         echo "ID inválida";
+        exit();
     }
 }
 

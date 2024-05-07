@@ -55,9 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
                 move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath);
             } else {
                 echo "El archivo es de una extensión no permitida.";
+                exit();
             }
         } else {
             echo "La imagen no se ha podido subir: " . $_FILES['image']['error'];
+            exit();
         }
 
         $record = new Record(null, $name, $author, $releaseDate, $label, $description, $targetFilePath, $tags, $rating, $_SESSION['user']['id']);
