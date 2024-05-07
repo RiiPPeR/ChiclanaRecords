@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                                 </svg></span>
                                             <input type="email" class="form-control" placeholder="Introduzca su email"
                                                 aria-label="Username" aria-describedby="basic-addon1" id="email"
-                                                name="email" maxlength="20"  />
+                                                name="email" maxlength="40"  />
                                         </div>
                                     </div>
                                 </div>
