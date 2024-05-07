@@ -35,7 +35,7 @@ if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
 	<?php include 'header.php' ?>
 
 	<main>
-		<div class="container rounded p-4 col-xl-8 col-lg-8 mt-2">
+		<div class="container-fluid rounded p-4 col-xl-8 col-lg-8 mt-2">
 			<div class="row">
 				<div class="col-7">
 					<h2 class="w-100 mb-4">Lista de discos añadidos por los usuarios</h2>

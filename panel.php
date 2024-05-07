@@ -46,16 +46,16 @@ $records = $recordDAO->getRecordsById($_SESSION['user']['id']);
 
                 <?php foreach ($records as $record) : ?>
 
-                    <article class="card d-flex flex-row flex-nowrap mt-4 p-3">
-                        <span class="col-2">
+                    <article class="card d-flex flex-md-row flex-column flex-nowrap mt-4 p-3">
+                        <span class="col-md-2">
                             <img src="<?= $record->image ?>" height="150" width="150" class="ms-5">
                         </span>
-                        <span class="col-4 ms-3 d-flex flex-column justify-content-between">
+                        <span class="col-md-4 ms-3 d-flex flex-column justify-content-between">
                             <h2><?= $record->name ?></h2>
                             <h3><?= $record->author ?></h3>
                             <h4><?= $record->releaseDate ?></h4>
                         </span>
-                        <span class="col-2 d-flex flex-column justify-content-between">
+                        <span class="col-md-2 d-flex flex-column justify-content-between">
                             <h5><?= $record->label ?></h5>
                             <span class="d-flex">
                                 <?php for ($i = 1; $i <= $record->rating; $i++) : ?>
@@ -71,10 +71,10 @@ $records = $recordDAO->getRecordsById($_SESSION['user']['id']);
                             </span>
                             <p><?= $record->tags ?></p>
                         </span>
-                        <span class="col-2">
+                        <span class="col-md-2">
                             <p><?= $record->description ?></p>
                         </span>
-                        <span class="col-2 d-flex flex-column justify-content-around align-items-center">
+                        <span class="col-md-2 d-flex flex-column justify-content-around align-items-center">
                             <a class="btn btn-primary btn-azul" href="modifyRecord.php?id=<?= $record->id ?>">
                                 <i class="bi bi-pencil-square"></i>
                             </a>

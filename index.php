@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+include './Model/User/User.php';
+include './Model/User/UserDAO.php';
+
+$userDAO = new UserDAO();
+$users = $userDAO->getUsers();
+
+?>
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark" id="html">
 
@@ -20,9 +29,26 @@
 			<div class="row">
 				<div class="container col-md-8">
 					<h1>Chiclana records</h1>
-					<p>Bienvendios a la página principal de Chiclana records donde podrás subir tu colección de discos! Registrate para poder ver las colecciones de otros usuarios, además de crear tu propia colección.</p>
-					<h2>Colecciones de otros usuarios:</h2>
+					<p>Bienvendios a la página principal de Chiclana records donde podrás subir tu colección de discos!
+						Registrate para poder ver las colecciones de otros usuarios, además de crear tu propia
+						colección.</p>
+					<h2>¿Cómo subir tu colección?</h2>
+					<p>Para subir tu colección simplemente tienes que <a href="register.php">crearte una cuenta</a>, así
+						podrás crear tu colección de discos además de ver las colecciones de otros usuarios.</p>
+					<h2>¿Qué es el label?</h2>
+					<p>Para guardar tus discos, necesitarás saber cual es su «label», este es simplemente un código de
+						indentificación que traen todos los dicos, normalmente lo podrás encontrar en el dorsal de la
+						portada, también en una de las esquinas de la parte de atras de esta, o en el la pegatina del
+						propio disco.</p>
+					<img src="https://i.discogs.com/8ey6XVpCdAVhf_4m2Oiy-Hmo-WmIP6GuOt34mGYrCZQ/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4NDk5/MDQtMTQ3Nzg0NzY4/MC03MDIzLmpwZWc.jpeg" alt="parte trasera portada de héroe de leyenda" height="350">
+					<img src="https://i.discogs.com/9v2gKr5LxSUwu1U8cKVElSI_PRuwBDeqUaTmffMxYgA/rs:fit/g:sm/q:90/h:450/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4NDk5/MDQtMTQ3Nzg0NzY4/MC0xOTI4LmpwZWc.jpeg" alt="label de héroe de leyenda" height="350">
+					<p>(Ejemplos donde se puede ver el label en la parte superior derecha de la portada trasera, o en la
+						pegatina del disco justo encima de la denotacón de la cara A)</p>
+					<p>A dicho identificador, habría que añadirle la empresa discográfica que ha prensado el disco, en
+						este caso sería EMI, por lo que el label del disco sería EMI - 056-7482901.</p>
+					<h2>Colecciones de otros usuarios</h2>
 					<p>A continuación podras encontrar las colecciones de otros usuarios:</p>
+
 				</div>
 				<div class="container col-md-4">
 					<div class="row">
@@ -67,6 +93,20 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="container">
+
+					<?php foreach ($users as $user) : ?>
+
+						<a href="collection.php?user=<?= $user->username ?>">
+							<article class="mt-3 col-4 card d-flex flex-row justify-content-center">
+								<p style="width: fit-content;" class="mt-2 mb-2">@<?= $user->username ?></p>
+							</article>
+						</a>
+
+
+					<?php endforeach; ?>
+
 				</div>
 			</div>
 		</div>
