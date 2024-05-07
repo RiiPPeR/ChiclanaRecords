@@ -46,7 +46,7 @@ $records = $recordDAO->getRecordsById($_SESSION['user']['id']);
 
                 <?php foreach ($records as $record) : ?>
 
-                    <article class="card d-flex flex-md-row flex-column flex-nowrap mt-4 p-3">
+                    <article class="card d-flex flex-lg-row flex-column flex-nowrap mt-4 p-3 ">
                         <span class="col-md-2">
                             <img src="<?= $record->image ?>" height="150" width="150" class="ms-5">
                         </span>
@@ -71,14 +71,14 @@ $records = $recordDAO->getRecordsById($_SESSION['user']['id']);
                             </span>
                             <p><?= $record->tags ?></p>
                         </span>
-                        <span class="col-md-2">
+                        <span class="col-md-3">
                             <p><?= $record->description ?></p>
                         </span>
-                        <span class="col-md-2 d-flex flex-column justify-content-around align-items-center">
-                            <a class="btn btn-primary btn-azul" href="modifyRecord.php?id=<?= $record->id ?>">
+                        <span class="col-md-2 d-flex flex-column justify-content-around align-items-left">
+                            <a class="btn btn-primary btn-azul w-25" href="modifyRecord.php?id=<?= $record->id ?>">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
-                            <a class="btn btn-danger btn-rojo" href="deleteRecord.php?id=<?= $record->id ?>">
+                            <a class="btn btn-danger btn-rojo w-25" href="deleteRecord.php?id=<?= $record->id ?>">
                                 <i class="bi bi-x-square"></i>
                             </a>
                         </span>

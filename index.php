@@ -118,13 +118,13 @@ $users = $userDAO->getUsers();
 								<?php if(isset($users[$j])): ?>
 
 									<article class="col-3 me-5 ms-5" style="height: fit-content;">
-										<a href="collection.php?user=<?= $users[$j]->username ?>">
+										<a href="collection.php?userId=<?= $users[$j]->id ?>">
 											<div class="mt-3 card d-flex flex-row justify-content-center">
 												<p style="width: fit-content;" class="mt-2 mb-2">@<?= $users[$j]->username ?></p>
 											</div>
 										</a>
 									</article>
-
+									
 								<?php endif; ?>
 
 							<?php endfor; ?>

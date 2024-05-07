@@ -94,4 +94,9 @@ class RecordDAO {
 
         $this->conn->query($sql);
     }
+
+    public function deleteRecord($id) {
+        $sql = "DELETE FROM ". Database::$table_prefix . "records WHERE id=$id";
+        $this->conn->query($sql);
+    }
 }

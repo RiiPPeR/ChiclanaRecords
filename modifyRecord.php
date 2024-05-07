@@ -17,9 +17,8 @@ $id = null;
 if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['id'])) {
     $id = $_GET['id'];
     $record = $recordDAO->getRecordById($id);
-    if (!$record || ($_SESSION['user']['id'] != $record->userId)) {
+    if (!$record || ($_SESSION['user']['id'] != $record->userId) && !($_SESSION['user']['rol'] == true)) {
         header('Location: panel.php');
-        exit();
     }
 }
 

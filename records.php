@@ -74,10 +74,10 @@ if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
                             <td><?= $record->rating ?></td>
                             <td><?= $record->userId ?></td>
 							<td class="d-flex justify-content-evenly">
-								<a class="btn btn-primary btn-azul" href="modifiyUser.php?id=<?= $record->id ?>">
+								<a class="btn btn-primary btn-azul" href="modifyRecord.php?id=<?= $record->id ?>">
 									<i class="bi bi-pencil-square"></i>
 								</a>
-								<a class="btn btn-danger btn-rojo" href="deleteUser.php?id=<?= $record->id ?>">
+								<a class="btn btn-danger btn-rojo" href="deleteRecord.php?id=<?= $record->id ?>">
 									<i class="bi bi-x-square"></i>
 								</a>
 							</td>
