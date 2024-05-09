@@ -5,16 +5,11 @@
   color: white!important;
 }
 
-html {
-  height: 100%;
-}
-
 body {
   font-family: 'Poppins';
   background: url('../images/background/retro2.jpg');
   background-size: cover;
   background-attachment: fixed;
-  height: 100%;
 }
 
 .azul-oscuro {

@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$userDAO = new UserDAO();
 
 	$userDAO->updateUserPassword($email, $password);
+
+    header('Location: login.php');
 }
 
 ?>

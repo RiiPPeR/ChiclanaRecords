@@ -28,14 +28,35 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
 	$username = $_POST['validationDefaultUsername'];
 	$rol = $_POST['rol'];
 
+	if ($rol !== 1) {
+		$rol = 0;
+	} 
+
 	$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 	$userDAO = new UserDAO();
 
 	$user = new User($id, $name, $surname, $email, $hashed_password, $username, $rol);
-	$userDAO->updateUserNoPass($user);
 
-	header('Location: users.php');
+
+	try {
+		$userDAO->updateUserNoPass($user);
+
+		header('Location: users.php');
+	} catch (mysqli_sql_exception $e) {
+		if ($e->getCode() == 1062) {
+			if (strpos($e->getMessage(), "unique_username") == true) {
+				header('Location: modifiyUser.php?id=' . $user->id . '&error=username');
+			} else if (strpos($e->getMessage(), "unique_email") == true) {
+				header('Location: modifiyUser.php?id=' . $user->id . '&error=email');
+			}
+		} else {
+			echo "Ha ocurrido un error: " . $e->getMessage();
+			exit();
+		}
+	}
+
+	
 	exit();
 }
 
@@ -82,6 +103,26 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
 						</div>
 					</div>
 					<div class="card-body pt-0 pb-0">
+						<?php if (isset($_GET['error']) && $_GET['error'] == "username"): ?>
+							<div class="row">
+								<div class="col-12 mt-3">
+									<div class="alert alert-danger" role="alert" id="emailErrorMessage"
+										style="margin-bottom: 0;">
+										¡No puedes modificar el usuario a un usuario existente!
+									</div>
+								</div>
+							</div>
+						<?php endif; ?>
+						<?php if (isset($_GET['error']) && $_GET['error'] == "email"): ?>
+							<div class="row">
+								<div class="col-12 mt-3">
+									<div class="alert alert-danger" role="alert" id="emailErrorMessage"
+										style="margin-bottom: 0;">
+										¡No puedes cambiar el email a un email ya registrado!
+									</div>
+								</div>
+							</div>
+						<?php endif; ?>
 						<div class="row">
 							<div class="input-group mt-3">
 								<span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16"

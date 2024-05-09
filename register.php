@@ -14,9 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$username = $_POST['username'];
-	$rol = "user";
-
-	$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+	$rol = 0;
 
 	$userDAO = new UserDAO();
 	//$conn = $userDAO->getConexion();
@@ -25,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		/*$sql = "INSERT INTO " . Database::$table_prefix . "usuarios (name, surname, email, password, username) VALUES ('$nombre', '$apellido', '$email', '$hashed_password', '$username')";
 				
 		$conn->query($sql);*/
-		$userDAO->insertUser(new User(null, $nombre, $apellido, $email, $hashed_password, $username, $rol));
+		$userDAO->insertUser(new User(null, $nombre, $apellido, $email, $password, $username, $rol));
 		
 		if (isset($_SESSION['user']) && $_SESSION['user']['rol'] == true) {
 			header('Location: users.php');
@@ -95,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<?php if (isset($_GET['error']) && $_GET['error'] == "username"): ?>
 							<div class="row">
 								<div class="col-12 mt-3">
-									<div class="alert alert-danger" role="alert" id="emailErrorMessage"
+									<div class="alert alert-danger" role="alert" id="existinUser"
 										style="margin-bottom: 0;">
 										El usuario ya existe.
 									</div>
@@ -105,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<?php if (isset($_GET['error']) && $_GET['error'] == "email"): ?>
 							<div class="row">
 								<div class="col-12 mt-3">
-									<div class="alert alert-danger" role="alert" id="emailErrorMessage"
+									<div class="alert alert-danger" role="alert" id="existingEmail"
 										style="margin-bottom: 0;">
 										El email ya está registrado.
 									</div>
