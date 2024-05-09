@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-05-2024 a las 14:08:59
+-- Tiempo de generación: 09-05-2024 a las 01:29:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -33,7 +33,8 @@ CREATE TABLE `cr_records` (
   `author` varchar(50) DEFAULT NULL,
   `releaseDate` date DEFAULT NULL,
   `label` varchar(50) DEFAULT NULL,
-  `description` varchar(100) DEFAULT NULL,
+  `description` varchar(250) DEFAULT NULL,
+  `image` varchar(250) DEFAULT NULL,
   `tags` varchar(50) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL
@@ -43,8 +44,14 @@ CREATE TABLE `cr_records` (
 -- Volcado de datos para la tabla `cr_records`
 --
 
-INSERT INTO `cr_records` (`id`, `name`, `author`, `releaseDate`, `label`, `description`, `tags`, `rating`, `userId`) VALUES
-(1, 'Ya viene el sol', 'Mecano', '0000-00-00', '123132asdw', 'muy bueno', 'mecano', 5, 26);
+INSERT INTO `cr_records` (`id`, `name`, `author`, `releaseDate`, `label`, `description`, `image`, `tags`, `rating`, `userId`) VALUES
+(1, 'Ya viene el sol', 'Mecano', '1984-10-16', 'CBS – S-26211', 'Ya viene el Sol es el tercer álbum de estudio del grupo de tecno-pop español Mecano y último bajo el sello discográfico CBS.', './uploads/1.jpg', 'mecano, new wave, synth', 5, 26),
+(47, 'El mar no cesa', 'Héroes del Silencio', '1988-10-31', 'EMI – 068 79 1455', 'El mar no cesa es el primer álbum de estudio de la banda española Héroes del Silencio, y fue publicado el 31 de octubre de 1988.', './uploads/712XXbJQPbL._UF894,1000_QL80_.jpg', 'rock, spansih', 5, 26),
+(48, 'Descanso Dominical', 'Mecano', '1988-05-24', 'Ariola – 5F 209192', 'Descanso dominical es el nombre del quinto y penúltimo álbum de estudio del grupo español de música ', './uploads/c1310fc6ee21257f47d3c7cf5393b0ae.webp', 'mecano, pop, 80s', 5, 26),
+(49, 'El grito del tiempo', 'Duncan Dhu', '1987-01-01', ' GA-177', 'El grito del tiempo es el nombre del tercer álbum de estudio del grupo donostiarra Duncan Dhu, edita', './uploads/duncandhuelgritodeltiempo.jfif', 'rock, pop', 4, 26),
+(52, 'Busco algo barato - Aire (Single)', 'Mecano', '1984-01-01', '---', 'Cara A: Busco algo barato (Nacho Cano), Cara B: Aire (José María Cano)', './uploads/buscobusco.png', 'mecano, pop, 80s', 4, 26),
+(53, 'El Mar No Cesa', 'Héroes del Silencio', '1988-01-01', 'EMI – 068-7914551', 'El primer álbum de héroes del silencio', './uploads/712XXbJQPbL._UF894,1000_QL80_.jpg', 'rock', 5, 65),
+(54, 'Héroe de Leyenda', 'Héroes del Silencio', '1987-01-01', '---', 'Primer maxi single de Héroes del Silencio', './uploads/heroes-del-silencio-vinilo-cd-heroe-de-leyenda.jpg', 'rock', 4, 26);
 
 -- --------------------------------------------------------
 
@@ -67,13 +74,8 @@ CREATE TABLE `cr_usuarios` (
 --
 
 INSERT INTO `cr_usuarios` (`id`, `name`, `surname`, `email`, `password`, `username`, `rol`) VALUES
-(25, 'pepe', 'mel', 'pepemel@gmail.com', '$2y$10$3F90S43Za8iEQxXbI09T9OSpRUXcAgFkHRgaGJqNsIDg/6c4uhxee', 'pepemel', 0),
-(26, 'pablo', 'lopez', 'panlobu@gmail.com', '$2y$10$KkAihsXONeSEju9bij1vDOEcBVtUAcCBC6AxaTW9ULYD1auDNLpp2', 'panlobu', 1),
-(28, 'Juaneye', 'Valdivia', 'juanvaldivia@gmail.com', '$2y$10$Vukmsil8XwR71hUUuYQ1muQss33ZL4NH/LlbvFRMOVtB2ZEO373Xq', 'juanvalidivahds', 0),
-(29, 'Cristiano', 'Malagueño', 'cris@gmail.com', '$2y$10$x6jr2HESjeJ/K2u5mq9X..n5UobOf1ucyouvifpxO76vUvP9F3zyi', 'ronaldo7', 0),
-(35, 'antonietasta', 'antonio', 'antonio@gmail.com', '$2y$10$CMMxo.oCu01WGhcglBUUPueYforfV5ZGbztHPZoG05fMqvIQaWSC2', 'antonio14', 0),
-(36, 'pepe', 'pepe', 'pepe@pepe.com', '$2y$10$GkPAyUE3CwO/6KoTu6snP.IXdcLqaN5PnewnE.d/4.Q.C9Pceh7Ga', 'pepe', 0),
-(37, 'Joselete', 'ruiz', 'joselete@gmail.com', '$2y$10$TfHNNtscvGVqSRDVosGuXuNBXoRgae5O.0fSwrxHjMfugLQQl/srG', 'Joseleteelmillor', 0);
+(26, 'Pablo Antonio', 'López Butrón', 'panlobu@gmail.com', '$2y$10$a2W/zMmTeFd3Q7yx2Ldo8uDAOxbvx9H7GZzkOKZUtyLtiqYHh4ltC', 'panlobu', 1),
+(65, 'Antonio', 'López', 'antonlopezru@gmail.com', '$2y$10$Bz8y3lnI4k3ZnZseGvNKkuRaV3kheW1b9XBmwpDL60dJF7sVf0DIO', 'Antonio', 0);
 
 --
 -- Índices para tablas volcadas
@@ -102,13 +104,13 @@ ALTER TABLE `cr_usuarios`
 -- AUTO_INCREMENT de la tabla `cr_records`
 --
 ALTER TABLE `cr_records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `cr_usuarios`
 --
 ALTER TABLE `cr_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- Restricciones para tablas volcadas
