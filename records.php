@@ -41,30 +41,30 @@ if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
 					<h2 class="w-100 mb-4">Lista de discos añadidos por los usuarios</h2>
 				</div>
 				<a href="addRecord.php" class="col-5">
-					<button data-mdb-ripple-init type="button" class="btn btn-outline-light btn-rounded">
+					<button data-mdb-ripple-init type="button" class="btn boton-verde btn-rounded">
 						AÑADIR UN DISCO NUEVO
           			</button>
 				</a>
 			</div>
-			<table class="table table-hover table-borderless align-middle">
+			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>NOMBRE</th>
-						<th>AUTOR/S</th>
-						<th>FECHA DE SALIDA</th>
-						<th>DESCRIPCION</th>
-                        <th>IMAGEN</th>
-						<th>TAGS</th>
-                        <th>RATING</th>
-                        <th>USER ID</th>
-                        <th>ACCIONES</th>
+						<th scope="col">ID</th>
+						<th scope="col">NOMBRE</th>
+						<th scope="col">AUTOR/S</th>
+						<th scope="col">FECHA DE SALIDA</th>
+						<th scope="col">DESCRIPCION</th>
+                        <th scope="col">IMAGEN</th>
+						<th scope="col">TAGS</th>
+                        <th scope="col">RATING</th>
+                        <th scope="col">USER ID</th>
+                        <th scope="col">ACCIONES</th>
 					</tr>
 				</thead>
 				<tbody id="table_data" class="table-group-divider">
 					<?php foreach ($records as $record) : ?>
 						<tr>
-							<td><?= $record->id ?></td>
+							<th scope="row"><?= $record->id ?></th>
                             <td><?= $record->name ?></td>
                             <td><?= $record->author ?></td>
                             <td><?= $record->releaseDate ?></td>

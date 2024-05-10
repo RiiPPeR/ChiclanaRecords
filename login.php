@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 								<?php endif; ?>
 							</div>
 							<div class="card-footer">
-								<button class="btn text-white" type="submit">
+								<button class="btn text-white boton-verde" type="submit">
 									Iniciar sesión
 								</button>
 								<button class="btn text-white boton-amarillo mt-2 mt-md-0" type="button">

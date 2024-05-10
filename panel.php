@@ -38,50 +38,54 @@ $records = $recordDAO->getRecordsById($_SESSION['user']['id']);
                 <h1>Bienvenido, @<?= $_SESSION['user']['username'] ?></h1>
                 <p>Aquí podrás añadir nuevos discos a tu coleccion para que otros usuarios los puedan ver.</p>
 
-                <a href="addRecord.php?userId=<?= $_SESSION['user']['id'] ?>" class="col-5">
-                    <button data-mdb-ripple-init type="button" class="btn btn-outline-light btn-rounded">
+                <a href="addRecord.php?userId=<?= $_SESSION['user']['id'] ?>" class="col-lg-5 col-auto">
+                    <button data-mdb-ripple-init type="button" class="btn btn-rounded boton-verde">
                         AÑADIR UN DISCO NUEVO
                     </button>
                 </a>
 
                 <?php foreach ($records as $record) : ?>
 
-                    <article class="card d-flex flex-lg-row flex-column flex-nowrap mt-4 p-3 ">
-                        <span class="col-md-2">
-                            <img src="<?= $record->image ?>" height="150" width="150" class="ms-5">
-                        </span>
-                        <span class="col-md-4 ms-3 d-flex flex-column justify-content-between">
-                            <h2><?= $record->name ?></h2>
-                            <h3><?= $record->author ?></h3>
-                            <h4><?= $record->releaseDate ?></h4>
-                        </span>
-                        <span class="col-md-2 d-flex flex-column justify-content-between">
-                            <h5><?= $record->label ?></h5>
-                            <span class="d-flex">
-                                <?php for ($i = 1; $i <= $record->rating; $i++) : ?>
-                                    <span class="me-3">
-                                        <i class="bi bi-star-fill"></i>
-                                    </span>
-                                <?php endfor; ?>
-                                <?php for ($i = 5; $i > $record->rating; $i--) : ?>
-                                    <span class="me-3">
-                                    <i class="bi bi-star"></i>
-                                    </span>
-                                <?php endfor; ?>
+                    <article class="card d-flex flex-lg-row flex-column flex-nowrap mt-4 p-4 ps-5 transicion align-items-center align-items-lg-center container">
+                        <div class="col-lg-2 d-flex justify-content-end">
+                            <img src="<?= $record->image ?>" height="150" width="150" class="">
+                        </div>
+                        <div class="row col-lg-6">
+                            <div class="col-6 col-lg-7 d-flex flex-column justify-content-between ">
+                                <h2 class="ms-3"><?= $record->name ?></h2>
+                                <h3 class="ms-3"><?= $record->author ?></h3>
+                                <h4 class="ms-3"><?= $record->releaseDate ?></h4>
+                            </div>
+                            <div class="col-6 col-lg-5 d-flex flex-column justify-content-evenly">
+                                <h5><?= $record->label ?></h5>
+                                <span class="d-flex">
+                                    <?php for ($i = 1; $i <= $record->rating; $i++) : ?>
+                                        <span class="me-3">
+                                            <i class="bi bi-star-fill"></i>
+                                        </span>
+                                    <?php endfor; ?>
+                                    <?php for ($i = 5; $i > $record->rating; $i--) : ?>
+                                        <span class="me-3">
+                                            <i class="bi bi-star"></i>
+                                        </span>
+                                    <?php endfor; ?>
+                                </span>
+                                <p><?= $record->tags ?></p>
+                            </div>
+                        </div>
+                        <div class="row col-lg-4">
+                            <span class="col-lg-10">
+                                <p><?= $record->description ?></p>
                             </span>
-                            <p><?= $record->tags ?></p>
-                        </span>
-                        <span class="col-md-3">
-                            <p><?= $record->description ?></p>
-                        </span>
-                        <span class="col-md-2 d-flex flex-column justify-content-around align-items-left">
-                            <a class="btn btn-primary btn-azul w-25" href="modifyRecord.php?id=<?= $record->id ?>">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <a class="btn btn-danger btn-rojo w-25" href="deleteRecord.php?id=<?= $record->id ?>">
-                                <i class="bi bi-x-square"></i>
-                            </a>
-                        </span>
+                            <span class="col-lg-2 d-flex flex-lg-column flex-row justify-content-lg-around justify-content-center align-items-lg-left">
+                                <a class="btn btn-primary btn-azul" href="modifyRecord.php?id=<?= $record->id ?>">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a class="btn btn-danger btn-rojo" href="deleteRecord.php?id=<?= $record->id ?>">
+                                    <i class="bi bi-x-square"></i>
+                                </a>
+                            </span>
+                        </div>
 
                     </article>
 

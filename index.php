@@ -15,6 +15,7 @@ $users = $userDAO->getUsers();
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Index</title>
+	<link rel="shortcut icon" href="./images/albums/recordcr.png" type="image/x-icon">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -43,10 +44,12 @@ $users = $userDAO->getUsers();
 						indentificación que traen todos los dicos, normalmente lo podrás encontrar en el dorsal de la
 						portada, también en una de las esquinas de la parte de atras de esta, o en el la pegatina del
 						propio disco.</p>
-					<img src="https://i.discogs.com/8ey6XVpCdAVhf_4m2Oiy-Hmo-WmIP6GuOt34mGYrCZQ/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4NDk5/MDQtMTQ3Nzg0NzY4/MC03MDIzLmpwZWc.jpeg"
-						alt="parte trasera portada de héroe de leyenda" height="350">
-					<img src="https://i.discogs.com/9v2gKr5LxSUwu1U8cKVElSI_PRuwBDeqUaTmffMxYgA/rs:fit/g:sm/q:90/h:450/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4NDk5/MDQtMTQ3Nzg0NzY4/MC0xOTI4LmpwZWc.jpeg"
-						alt="label de héroe de leyenda" height="350">
+					<div class="d-md-flex flex-row">
+						<img src="https://i.discogs.com/8ey6XVpCdAVhf_4m2Oiy-Hmo-WmIP6GuOt34mGYrCZQ/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4NDk5/MDQtMTQ3Nzg0NzY4/MC03MDIzLmpwZWc.jpeg"
+							alt="parte trasera portada de héroe de leyenda" height="350">
+						<img src="https://i.discogs.com/9v2gKr5LxSUwu1U8cKVElSI_PRuwBDeqUaTmffMxYgA/rs:fit/g:sm/q:90/h:450/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4NDk5/MDQtMTQ3Nzg0NzY4/MC0xOTI4LmpwZWc.jpeg"
+							alt="label de héroe de leyenda" height="350" width="350">
+					</div>
 					<p>(Ejemplos donde se puede ver el label en la parte superior derecha de la portada trasera, o en la
 						pegatina del disco justo encima de la denotacón de la cara A)</p>
 					<p>A dicho identificador, habría que añadirle la empresa discográfica que ha prensado el disco, en
@@ -111,13 +114,13 @@ $users = $userDAO->getUsers();
 
 						<div class="row">
 
-							<div class="d-flex flex-row">
+							<div class="d-flex flex-row flex-wrap">
 
 							<?php for ($k = 1; $k <= 3; $j++, $k++): ?>
 
 								<?php if(isset($users[$j])): ?>
 
-									<article class="col-3 me-5 ms-5" style="height: fit-content;">
+									<article class="col-md-3 col-9 me-5 ms-5 transicion" style="height: fit-content;">
 										<a href="collection.php?userId=<?= $users[$j]->id ?>">
 											<div class="mt-3 card d-flex flex-row justify-content-center">
 												<p style="width: fit-content;" class="mt-2 mb-2">@<?= $users[$j]->username ?></p>

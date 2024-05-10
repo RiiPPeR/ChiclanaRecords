@@ -229,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						</div>
 					</div>
 					<div class="card-footer">
-						<button class="btn text-white" type="submit">Crear cuenta</button>
+						<button class="btn text-white boton-verde" type="submit">Crear cuenta</button>
 					</div>
 				</form>
 			</div>

@@ -72,7 +72,7 @@ if (isset($_POST['btn-delete'])) {
                 <div class="card-footer">
                     <form method="post">
                         <input readonly type="hidden" name="id-input" value="<?php echo $user->id ?>">
-                        <button class="btn" type="submit" name="btn-delete">
+                        <button class="btn boton-rojo" type="submit" name="btn-delete">
                             Borrar usuario
                         </button>
                     </form>

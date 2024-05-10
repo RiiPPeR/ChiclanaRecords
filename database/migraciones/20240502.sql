@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS <prefijo>records (
   `userId` int(11) DEFAULT NULL
 );
 
-INSERT INTO `cr_records` (`id`, `name`, `author`, `releaseDate`, `label`, `description`, `image`, `tags`, `rating`, `userId`) VALUES
+INSERT INTO <prefijo>records (`id`, `name`, `author`, `releaseDate`, `label`, `description`, `image`, `tags`, `rating`, `userId`) VALUES
 (1, 'Ya viene el sol', 'Mecano', '1984-10-16', 'CBS – S-26211', 'Ya viene el Sol es el tercer álbum de estudio del grupo de tecno-pop español Mecano y último bajo el sello discográfico CBS.', './uploads/1.jpg', 'mecano, new wave, synth', 5, 26),
 (47, 'El mar no cesa', 'Héroes del Silencio', '1988-10-31', 'EMI – 068 79 1455', 'El mar no cesa es el primer álbum de estudio de la banda española Héroes del Silencio, y fue publicado el 31 de octubre de 1988.', './uploads/712XXbJQPbL._UF894,1000_QL80_.jpg', 'rock, spansih', 5, 26),
 (48, 'Descanso Dominical', 'Mecano', '1988-05-24', 'Ariola – 5F 209192', 'Descanso dominical es el nombre del quinto y penúltimo álbum de estudio del grupo español de música ', './uploads/c1310fc6ee21257f47d3c7cf5393b0ae.webp', 'mecano, pop, 80s', 5, 26),
@@ -34,18 +34,18 @@ INSERT INTO <prefijo>usuarios (`id`, `name`, `surname`, `email`, `password`, `us
 (26, 'Pablo Antonio', 'López Butrón', 'panlobu@gmail.com', '$2y$10$a2W/zMmTeFd3Q7yx2Ldo8uDAOxbvx9H7GZzkOKZUtyLtiqYHh4ltC', 'panlobu', 1),
 (65, 'Antonio', 'López', 'antonlopezru@gmail.com', '$2y$10$Bz8y3lnI4k3ZnZseGvNKkuRaV3kheW1b9XBmwpDL60dJF7sVf0DIO', 'Antonio', 0);
 
-ALTER TABLE `cr_records`
+ALTER TABLE <prefijo>records
   ADD PRIMARY KEY (`id`),
   ADD KEY `userId` (`userId`);
 
-ALTER TABLE `cr_usuarios`
+ALTER TABLE <prefijo>usuarios
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `unique_username` (`username`),
   ADD UNIQUE KEY `unique_email` (`email`) USING BTREE;
 
 
-ALTER TABLE `cr_records` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+ALTER TABLE <prefijo>records MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
-ALTER TABLE `cr_usuarios` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+ALTER TABLE <prefijo>usuarios MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
-ALTER TABLE `cr_records` ADD CONSTRAINT `cr_records_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `cr_usuarios` (`id`);
+ALTER TABLE <prefijo>records ADD CONSTRAINT `cr_records_ibfk_1` FOREIGN KEY (`userId`) REFERENCES <prefijo>usuarios (`id`);

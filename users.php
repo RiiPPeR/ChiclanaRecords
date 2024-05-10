@@ -40,26 +40,26 @@ if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
 					<h2 class="w-100 mb-4">Lista de usuarios registrados</h2>
 				</div>
 				<a href="register.php" class="col-5">
-					<button data-mdb-ripple-init type="button" class="btn btn-outline-light btn-rounded">
+					<button data-mdb-ripple-init type="button" class="btn boton-verde btn-rounded">
 						AÑADIR UNA NUEVA CUENTA
           			</button>
 				</a>
 			</div>
-			<table class="table table-hover table-borderless align-middle">
+			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>NOMBRE</th>
-						<th>APELLIDO/S</th>
-						<th>EMAIL</th>
-						<th>USERNAME</th>
-						<th>ACCIONES</th>
+						<th scope="col">ID</th>
+						<th scope="col">NOMBRE</th>
+						<th scope="col">APELLIDO/S</th>
+						<th scope="col">EMAIL</th>
+						<th scope="col">USERNAME</th>
+						<th scope="col">ACCIONES</th>
 					</tr>
 				</thead>
 				<tbody id="table_data" class="table-group-divider">
 					<?php foreach ($users as $user) : ?>
 						<tr>
-							<td><?= $user->id ?></td>
+							<th sscope="row"><?= $user->id ?></th>
 							<td><?= $user->name ?></td>
 							<td><?= $user->surname ?></td>
 							<td><?= $user->email ?></td>

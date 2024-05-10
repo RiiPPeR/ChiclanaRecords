@@ -75,7 +75,7 @@ if (isset($_POST['btn-delete'])) {
                 <div class="card-footer">
                     <form method="post">
                         <input type="hidden" name="id-input" value="<?php echo $record->id ?>">
-                        <button class="btn" type="submit" name="btn-delete">
+                        <button class="btn boton-rojo" type="submit" name="btn-delete">
                             Borrar disco
                         </button>
                     </form>

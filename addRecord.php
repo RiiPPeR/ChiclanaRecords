@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
         header('Location: panel.php');
     }
 } else {
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST)) {
         $recordDAO = new RecordDAO();
 
         $name = $_POST['name'];
@@ -240,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn text-white" type="submit">Añadir disco</button>
+                        <button class="btn text-white" type="submit" name="btnSend">Añadir disco</button>
                     </div>
                 </form>
             </div>

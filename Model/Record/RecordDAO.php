@@ -78,6 +78,21 @@ class RecordDAO {
         return null;
     }
 
+    private function getImagePath($id) {
+        $sql = "SELECT image FROM " . Database::$table_prefix . "records WHERE id='$id'";
+        $result = $this->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $imagePath = $row["image"];
+
+                return $imagePath;
+            }
+        }
+        
+        return null;
+    }
+
     public function updateRecord(Record $record) {
         $id = $record->id;
         $name = $record->name;
@@ -96,6 +111,10 @@ class RecordDAO {
     }
 
     public function deleteRecord($id) {
+        if (!unlink($this->getImagePath($id))) { 
+            echo ($this->getImagePath($id) . " no se ha podido borrar la imagen del disco.");
+            exit(); 
+        }
         $sql = "DELETE FROM ". Database::$table_prefix . "records WHERE id=$id";
         $this->conn->query($sql);
     }

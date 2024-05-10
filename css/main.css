@@ -2,12 +2,12 @@
 /* Option 2: Import via CSS */
 
 * {
-  color: white!important;
+  color: rgb(255, 255, 255)!important;
 }
 
 body {
   font-family: 'Poppins';
-  background: url('../images/background/retro2.jpg');
+  background: url('../images/background/bg3.jpg');
   background-size: cover;
   background-attachment: fixed;
 }
@@ -16,30 +16,64 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.card, nav, footer, .input-group-text {
-  backdrop-filter: blur(0.5rem);
-  background-color: rgba(95, 95, 95, 0.15)!important;
-  border-color: rgba(0, 0, 0, 0.473);
-}
-
-.admin {
-  backdrop-filter: blur(0.2rem);
-  background-color: rgba(212, 30, 30, 0.219)!important;
-}
-
-input, .progress, button, th, td, textarea {
+.card, nav, footer, .input-group-text, .dropdown-toggle, table {
   backdrop-filter: blur(1rem);
-  background-color: rgba(177, 167, 165, 0.3)!important;
+  background-color: rgba(59, 59, 59, 0.4)!important;
 }
+
+input, .progress, textarea, .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.322)!important;
+}
+
 
 .boton-amarillo {
   backdrop-filter: blur(1rem);
-  background-color: rgba(240, 207, 23, 0.4)!important;
+  background-color: rgba(240, 207, 23, 0.3)!important;
 }
 
-.input-group-text, .form-control {
-  border: 0.1 solid black;
-  border-color: rgba(0, 0, 0, 0);
+.boton-amarillo:hover {
+  color: white!important;
+  background-color: rgba(240, 207, 23, 0.55)!important;
+  backdrop-filter: blur(2rem);
+  transition: 0.5s;
+}
+
+.boton-verde {
+  background-color: rgba(53, 211, 32, 0.3) !important;
+  backdrop-filter: blur(1rem);
+}
+
+.boton-verde:hover {
+  background-color: rgba(53, 211, 32, 0.55) !important;
+  backdrop-filter: blur(1rem);
+}
+
+.boton-rojo {
+  background-color: rgba(211, 32, 32, 0.3) !important;
+  backdrop-filter: blur(1rem);
+}
+
+.boton-rojo:hover {
+  background-color: rgba(211, 32, 32, 0.55) !important;
+  backdrop-filter: blur(1rem);
+}
+
+.boton-azul {
+  background-color: rgba(32, 35, 211, 0.3) !important;
+  backdrop-filter: blur(1rem);
+}
+
+.boton-azul:hover {
+  background-color: rgba(32, 35, 211, 0.55) !important;
+  backdrop-filter: blur(1rem);
+}
+
+.input-group-text, .form-control, .card, .card-header, .card-footer, .card-body {
+  border: 0;
+}
+
+.card-header, .card-footer {
+  background-color: transparent;
 }
 
 .alert {
@@ -48,20 +82,31 @@ input, .progress, button, th, td, textarea {
   color: rgb(68, 0, 0);
 }
 
-button:hover, input:hover, input:focus, textarea:hover {
+button, input, textarea {
+  transition-timing-function: ease-out;
+  transition: all 0.5s;
+}
+
+button:hover, input:hover, textarea:hover {
   color: white!important;
   background-color: rgba(225, 225, 225, 0.4)!important;
   backdrop-filter: blur(2rem);
-  transition: 0.5s;
+  transition-timing-function: ease-out;
+  transition: all 0.5s;
   transform: scale(1.005);
 }
 
-.boton-amarillo:hover {
-  color: white!important;
-  background-color: rgba(240, 207, 23, 0.644)!important;
-  backdrop-filter: blur(2rem);
-  transition: 0.5s;
+.transicion {
+  transition-timing-function: ease-out;
+  transition: all 0.5s;
 }
+
+.transicion:hover {
+  transition-timing-function: ease-out;
+  transition: all 0.5s;
+  transform: scale(1.05);
+}
+
 
 .form-control::placeholder {
   color: rgba(255, 255, 255, 0.733);
@@ -71,31 +116,9 @@ button:hover, input:hover, input:focus, textarea:hover {
   border-radius: 10px;
 }
 
-th, td {
-  border: 2px solid transparent;
-  border-radius: 7px;
-}
 
 tr:nth-child(odd):not(thead > tr) {
-  background-color: rgba(139, 139, 139, 0.534)!important;
-}
-
-th {
-  justify-content: center;
-}
-
-.btn-azul {
-  background-color: rgba(32, 59, 211, 0.274) !important;
-  backdrop-filter: blur(0.2rem);
-}
-
-.btn-rojo {
-  background-color: rgba(211, 32, 32, 0.274) !important;
-  backdrop-filter: blur(0.2rem);
-}
-
-.table {
-  margin-bottom: 100px;
+  background-color: rgba(139, 139, 139, 0.4)!important;
 }
 
 a.active {
@@ -116,6 +139,10 @@ article {
 
 .bi::before {
   vertical-align: -.125rem !important;
+}
+
+th, td, tr {
+  background-color: transparent!important;
 }
 
 @media screen and (max-width: 767px) {
