@@ -30,12 +30,12 @@ class UserDAO {
         $this->conn->query($sql);
     }
 
-    public function getUsers() : array {
+    public function getUsers($orderBy) : array {
         // creamos un array vacio
         $users = array();
 
         // hacemos la query para obetener todos los usuarios
-        $sql = "SELECT * FROM " . Database::$table_prefix . "usuarios";
+        $sql = "SELECT * FROM " . Database::$table_prefix . "usuarios ORDER BY $orderBy";
         $restul = $this->conn->query($sql);
 
         // si hay mas de 1 linea, existem al menos un usuario

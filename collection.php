@@ -11,7 +11,15 @@ if (!isset($_SESSION['user'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $recordDAO = new RecordDAO();
 
-    $records = $recordDAO->getRecordsById($_GET['userId']);
+    //$records = $recordDAO->getRecordsById($_GET['userId'], "id");
+
+    if (isset($_GET['sort'])) {
+        $orderBy = $_GET["sort"];
+    } else {
+        $orderBy = "id";
+    }
+
+    $records = $recordDAO->getRecordsById($_GET['userId'],  $orderBy);
 }
 
 ?>
@@ -41,6 +49,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     <h1>Este usuario aún no ha subido nada a su colección.</h1>
                 <?php else : ?>
                     <h1>Colección:</h1>
+
+
+                    <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" class="d-flex flex-row mt-3 h-100">
+                        <div class="col-3">
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupSelect01">Ordernar por:</label>
+                                <select class="form-select" id="inputGroupSelect01" name="sort">
+                                    <option <?= $orderBy == 'id' ? 'selected' : '' ?> value="id">ID</option>
+                                    <option <?= $orderBy == 'name' ? 'selected' : '' ?> value="name">Nombre</option>
+                                    <option <?= $orderBy == 'author' ? 'selected' : '' ?> value="author">Autor</option>
+                                    <option <?= $orderBy == 'rating' ? 'selected' : '' ?> value="rating">Rating</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn text-white boton-verde ms-3 h-75" type="submit">
+                            Ordenar
+                        </button>
+                    </form>
+
                 <?php endif; ?>
 
                 <?php foreach ($records as $record) : ?>

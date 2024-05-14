@@ -29,10 +29,10 @@ class RecordDAO {
         $this->conn->query($sql);
     }
 
-    public function getRecords() {
+    public function getRecords($sortMethod) {
         $records = array();
 
-        $sql = "SELECT * FROM " . Database::$table_prefix . "records";
+        $sql = "SELECT * FROM " . Database::$table_prefix . "records  ORDER BY $sortMethod ASC";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -46,14 +46,17 @@ class RecordDAO {
         return $records;
     }
 
-    public function getRecordsById($id) {
+    public function getRecordsById($id, $sortMethod) {
         $records = array();
 
-        $sql = "SELECT * FROM " . Database::$table_prefix . "records WHERE userId='$id'";
+        //echo $sortMethod;
+
+        $sql = "SELECT * FROM " . Database::$table_prefix . "records WHERE userId='$id' ORDER BY $sortMethod ASC";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
+                //echo $row["name"];
                 $record = new Record($row['id'], $row['name'], $row['author'], $row['releaseDate'], $row['label'], $row['description'], $row['image'], $row['tags'], $row['rating'], $row['userId']);
 
                 $records[] = $record;

@@ -10,7 +10,17 @@ if (!isset($_SESSION['user'])) {
 
 $recordDAO = new RecordDAO();
 
-$records = $recordDAO->getRecordsById($_SESSION['user']['id']);
+//$records = $recordDAO->getRecordsById($_SESSION['user']['id'], "id");
+
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
+    if (isset($_GET['sort'])) {
+        $orderBy = $_GET["sort"];
+    } else {
+        $orderBy = "id";
+    }
+
+    $records = $recordDAO->getRecordsById($_SESSION['user']['id'],  $orderBy);
+}
 
 ?>
 <!DOCTYPE html>
@@ -43,6 +53,25 @@ $records = $recordDAO->getRecordsById($_SESSION['user']['id']);
                         AÑADIR UN DISCO NUEVO
                     </button>
                 </a>
+
+
+                <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" class="d-flex flex-row mt-3 h-100">
+                    <div class="col-3">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Ordernar por:</label>
+                            <select class="form-select" id="inputGroupSelect01" name="sort">
+                                <option <?= $orderBy == 'id' ? 'selected' : '' ?> value="id">ID</option>
+                                <option <?= $orderBy == 'name' ? 'selected' : '' ?> value="name">Nombre</option>
+                                <option <?= $orderBy == 'author' ? 'selected' : '' ?> value="author">Autor</option>
+                                <option <?= $orderBy == 'rating' ? 'selected' : '' ?> value="rating">Rating</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn text-white boton-verde ms-3 h-75" type="submit">
+                        Ordenar
+                    </button>
+                </form>
+
 
                 <?php foreach ($records as $record) : ?>
 

@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
                                                 d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
                                         </svg></span>
                                     <input type="text" id="name" name="name" class="form-control"
-                                        placeholder="Nombre del disco" value="<?= $record->name ?>" required />
+                                        placeholder="Nombre del disco" value="<?= $record->name ?>" required  maxlength="50"/>
                                     <input hidden readonly type="text" id="id" name="id" value="<?= $record->id ?>"/>
                                 </div>
                             </div>
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
                                                 d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
                                         </svg></span>
                                     <input type="text" id="author" name="author" class="form-control"
-                                        placeholder="Autor del disco" value="<?= $record->author ?>" required />
+                                        placeholder="Autor del disco" value="<?= $record->author ?>" required maxlength="50"/>
                                 </div>
                             </div>
                         </div>
@@ -152,14 +152,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
                                             <path d="M9 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
                                         </svg></span>
                                     <input type="text" id="label" name="label" class="form-control" placeholder="Label"
-                                        value="<?= $record->label ?>" required />
+                                        value="<?= $record->label ?>" required maxlength="20"/>
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-3" style="width: 100%;">
                             <textarea class="form-control ms-2" placeholder="Descripción del disco" id="description"
                                 name="description" style="box-sizing: border-box; resize:none;"
-                                rows="2"><?= $record->description ?></textarea>
+                                rows="2" maxlength="250"><?= $record->description ?></textarea>
                         </div>
                         <div class="row">
                             <div class="input-group mt-3">
@@ -185,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
                                                 d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1z" />
                                         </svg></span>
                                     <input type="text" id="tags" name="tags" class="form-control" placeholder="Tags"
-                                        value="<?= $record->tags ?>" required />
+                                        value="<?= $record->tags ?>" required maxlength="15"/>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 mt-3 mt-md-0 mb-3">
@@ -231,7 +231,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn text-white" type="submit" name="btnSend">Modificar disco</button>
+                        <button class="btn boton-amarillo" type="submit" name="btnSend">Modificar disco</button>
                     </div>
                 </form>
             </div>

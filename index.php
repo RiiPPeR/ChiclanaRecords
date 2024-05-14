@@ -5,7 +5,7 @@ include './Model/User/User.php';
 include './Model/User/UserDAO.php';
 
 $userDAO = new UserDAO();
-$users = $userDAO->getUsers();
+$users = $userDAO->getUsers("id");
 
 ?>
 <!DOCTYPE html>

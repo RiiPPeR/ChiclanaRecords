@@ -16,7 +16,7 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.card, nav, footer, .input-group-text, .dropdown-toggle, table {
+.card, nav, footer, .input-group-text, .dropdown-toggle, table, select, option {
   backdrop-filter: blur(1rem);
   background-color: rgba(59, 59, 59, 0.4)!important;
 }
@@ -62,6 +62,7 @@ input, .progress, textarea, .dropdown-item:hover {
   background-color: rgba(32, 35, 211, 0.3) !important;
   backdrop-filter: blur(1rem);
 }
+
 
 .boton-azul:hover {
   background-color: rgba(32, 35, 211, 0.55) !important;

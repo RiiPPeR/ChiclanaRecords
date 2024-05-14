@@ -32,12 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
         $label = $_POST['label'];
         $description = $_POST['description'];
         $tags = $_POST['tags'];
+        $rating = isset($_POST['rating']) ? $_POST['rating'][0] : null;
 
-        if (isset($_POST['rating'])) {
+/*         if (isset($_POST['rating'])) {
             $serializedRating = serialize($_POST['rating']);
             $unserializeRating = unserialize($serializedRating);
             $rating = $unserializeRating[0];
-        }
+        } */
 
         $targetFilePath = null;
 
@@ -119,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
                                                 d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
                                         </svg></span>
                                     <input type="text" id="name" name="name" class="form-control"
-                                        placeholder="Nombre del disco" required />
+                                        placeholder="Nombre del disco" required maxlength="50"/>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 ps-md-0 mt-3 mt-md-0">
@@ -132,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
                                                 d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
                                         </svg></span>
                                     <input type="text" id="author" name="author" class="form-control"
-                                        placeholder="Autor del disco" required />
+                                        placeholder="Autor del disco" required maxlength="50"/>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
                                                 d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0    1  2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
                                         </svg> Fecha de salida</span>
                                     <input type="date" id="releaseDate" name="releaseDate" class="form-control"
-                                        placeholder="Fecha de salida" required />
+                                        placeholder="Fecha de salida" required/>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 ps-md-0 mt-3 mt-md-0">
@@ -162,13 +163,13 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
                                             <path d="M9 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
                                         </svg></span>
                                     <input type="text" id="label" name="label" class="form-control" placeholder="Label"
-                                        required />
+                                        required maxlength="20"/>
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-3" style="width: 100%;">
                             <textarea class="form-control ms-2" placeholder="Descripción del disco" id="description"
-                                name="description" style="box-sizing: border-box; resize:none;" rows="2"></textarea>
+                                name="description" style="box-sizing: border-box; resize:none;" rows="2" maxlength="250"></textarea>
                         </div>
                         <div class="row">
                             <div class="input-group mt-3">
@@ -180,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
                                             d="M14 14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zM4 1a1 1 0 0 0-1 1v10l2.224-2.224a.5.5 0 0 1 .61-.075L8 11l2.157-3.02a.5.5 0 0 1 .76-.063L13 10V4.5h-2A1.5 1.5 0 0 1 9.5 3V1z" />
                                     </svg></span>
                                 <input type="file" id="image" name="image" class="form-control"
-                                    placeholder="Nombre del disco" required />
+                                    required />
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -194,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
                                                 d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1z" />
                                         </svg></span>
                                     <input type="text" id="tags" name="tags" class="form-control" placeholder="Tags"
-                                        required />
+                                        required maxlength="15"/>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 mt-3 mt-md-0 mb-3">

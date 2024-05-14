@@ -14,7 +14,18 @@ include './Model/Record/RecordDAO.php';
 
 $userDAO = new UserDAO();
 $recordsDAO = new RecordDAO();
-$users = $userDAO->getUsers();
+
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
+	if (isset($_GET['sort'])) {
+		$orderBy = $_GET["sort"];
+	} else {
+		$orderBy = "id";
+	}
+
+	$users = $userDAO->getUsers($orderBy);
+}
+
+//$users = $userDAO->getUsers();
 
 
 
@@ -43,17 +54,36 @@ $users = $userDAO->getUsers();
 		<p>En esta página podrás ver una lista de los usuarios registrados de manera mas detallada además de visitar las
 			colecciones de otros usuarios registrados simplemente pulsando en su perfil</p>
 
+		<form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" class="d-flex flex-row mt-3 h-100">
+			<div class="col-3">
+				<div class="input-group mb-3">
+					<label class="input-group-text" for="inputGroupSelect01">Ordernar por:</label>
+					<select class="form-select" id="inputGroupSelect01" name="sort">
+						<option <?= $orderBy == 'id' ? 'selected' : '' ?> value="id">ID</option>
+						<option <?= $orderBy == 'name' ? 'selected' : '' ?> value="name">Nombre</option>
+						<option <?= $orderBy == 'surname' ? 'selected' : '' ?> value="surname">Apellidos</option>
+						<option <?= $orderBy == 'email' ? 'selected' : '' ?> value="email">Email</option>
+						<option <?= $orderBy == 'username' ? 'selected' : '' ?> value="username">Usuario</option>
+					</select>
+				</div>
+			</div>
+			<button class="btn text-white boton-verde ms-3 h-75" type="submit">
+				Ordenar
+			</button>
+		</form>
+
 		<?php for ($i = 0, $j = 0; $i < count($users) / 2; $i++) : ?>
 
 			<div class="row">
 
 				<div class="d-flex flex-row justify-content-between flex-wrap">
 
+
 					<?php for ($k = 1; $k <= 2; $j++, $k++) : ?>
 
 						<?php if (isset($users[$j])) : ?>
 
-							<?php $records = $recordsDAO->getRecordsById($users[$j]->id); ?>
+							<?php $records = $recordsDAO->getRecordsById($users[$j]->id, "id"); ?>
 
 							<div class="div col-md-6 col-12 mt-5">
 								<article class="card transicion" style="width: 90%;">

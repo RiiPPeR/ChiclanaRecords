@@ -5,7 +5,16 @@ include './Model/User/User.php';
 include './Model/User/UserDAO.php';
 
 $userDAO = new UserDAO();
-$users = $userDAO->getUsers();
+
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
+	if (isset($_GET['sort'])) {
+		$orderBy = $_GET["sort"];
+	} else {
+		$orderBy = "id";
+	}
+
+	$users = $userDAO->getUsers($orderBy);
+}
 
 if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
 	echo 'No tienes permiso de estar en esta página';
@@ -45,6 +54,23 @@ if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
           			</button>
 				</a>
 			</div>
+			<form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" class="d-flex flex-row mt-3 h-100">
+				<div class="col-3">
+					<div class="input-group mb-3">
+						<label class="input-group-text" for="inputGroupSelect01">Ordernar por:</label>
+						<select class="form-select" id="inputGroupSelect01" name="sort">
+							<option <?= $orderBy == 'id' ? 'selected' : '' ?> value="id">ID</option>
+							<option <?= $orderBy == 'name' ? 'selected' : '' ?> value="name">Nombre</option>
+							<option <?= $orderBy == 'surname' ? 'selected' : '' ?> value="surname">Apellidos</option>
+							<option <?= $orderBy == 'email' ? 'selected' : '' ?> value="email">Email</option>
+							<option <?= $orderBy == 'username' ? 'selected' : '' ?> value="username">Username</option>
+						</select>
+					</div>
+				</div>
+				<button class="btn text-white boton-verde ms-3 h-75" type="submit">
+					Ordenar
+				</button>
+			</form>
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>

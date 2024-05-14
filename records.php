@@ -6,7 +6,18 @@ include './Model/Record/RecordDAO.php';
 
 
 $recordDAO = new RecordDAO();
-$records = $recordDAO->getRecords();
+
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
+	if (isset($_GET['sort'])) {
+		$orderBy = $_GET["sort"];
+	} else {
+		$orderBy = "id";
+	}
+
+	$records = $recordDAO->getRecords($orderBy);
+}
+
+//$records = $recordDAO->getRecords();
 
 if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
 	echo 'No tienes permiso de estar en esta página';
@@ -43,9 +54,25 @@ if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
 				<a href="addRecord.php" class="col-5">
 					<button data-mdb-ripple-init type="button" class="btn boton-verde btn-rounded">
 						AÑADIR UN DISCO NUEVO
-          			</button>
+					</button>
 				</a>
 			</div>
+			<form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" class="d-flex flex-row mt-3 h-100">
+				<div class="col-3">
+					<div class="input-group mb-3">
+						<label class="input-group-text" for="inputGroupSelect01">Ordernar por:</label>
+						<select class="form-select" id="inputGroupSelect01" name="sort">
+							<option <?= $orderBy == 'id' ? 'selected' : '' ?> value="id">ID</option>
+							<option <?= $orderBy == 'name' ? 'selected' : '' ?> value="name">Nombre</option>
+							<option <?= $orderBy == 'author' ? 'selected' : '' ?> value="author">Autor</option>
+							<option <?= $orderBy == 'rating' ? 'selected' : '' ?> value="rating">Rating</option>
+						</select>
+					</div>
+				</div>
+				<button class="btn text-white boton-verde ms-3 h-75" type="submit">
+					Ordenar
+				</button>
+			</form>
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
@@ -54,25 +81,25 @@ if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
 						<th scope="col">AUTOR/S</th>
 						<th scope="col">FECHA DE SALIDA</th>
 						<th scope="col">DESCRIPCION</th>
-                        <th scope="col">IMAGEN</th>
+						<th scope="col">IMAGEN</th>
 						<th scope="col">TAGS</th>
-                        <th scope="col">RATING</th>
-                        <th scope="col">USER ID</th>
-                        <th scope="col">ACCIONES</th>
+						<th scope="col">RATING</th>
+						<th scope="col">USER ID</th>
+						<th scope="col">ACCIONES</th>
 					</tr>
 				</thead>
 				<tbody id="table_data" class="table-group-divider">
 					<?php foreach ($records as $record) : ?>
 						<tr>
 							<th scope="row"><?= $record->id ?></th>
-                            <td><?= $record->name ?></td>
-                            <td><?= $record->author ?></td>
-                            <td><?= $record->releaseDate ?></td>
-                            <td><?= $record->description ?></td>
-                            <td><img src="<?= $record->image ?>" height="100" width="100"></td>
-                            <td><?= $record->tags ?></td>
-                            <td><?= $record->rating ?></td>
-                            <td><?= $record->userId ?></td>
+							<td><?= $record->name ?></td>
+							<td><?= $record->author ?></td>
+							<td><?= $record->releaseDate ?></td>
+							<td><?= $record->description ?></td>
+							<td><img src="<?= $record->image ?>" height="100" width="100"></td>
+							<td><?= $record->tags ?></td>
+							<td><?= $record->rating ?></td>
+							<td><?= $record->userId ?></td>
 							<td class="d-flex justify-content-evenly">
 								<a class="btn btn-primary btn-azul" href="modifyRecord.php?id=<?= $record->id ?>">
 									<i class="bi bi-pencil-square"></i>

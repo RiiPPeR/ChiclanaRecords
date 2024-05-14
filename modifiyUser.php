@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
 							<div class="form-check form-switch col-auto mt-2 ms-3 ms-md-0">
 								<input class="form-check-input" type="checkbox" role="switch"
 									id="flexSwitchCheckDefault" <?php echo $user->rol ? 'checked' : '' ?> name="rol"
-									value="1">
+									value="1" maxlength="50">
 								<label class="form-check-label" for="flexSwitchCheckDefault">Administrador</label>
 							</div>
 						</div>
@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
 									</svg></span>
 								<input type="text" id="apellido" name="apellido" aria-label="Last name"
 									class="form-control" placeholder="Apellido/s"
-									value="<?php echo $user->surname ?>" />
+									value="<?php echo $user->surname ?>" maxlength="50"/>
 							</div>
 						</div>
 						<div class="row">
@@ -165,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
 									</svg></span>
 								<input type="email" class="form-control" placeholder="Correo electrónico"
 									aria-label="Email" aria-describedby="basic-addon1" id="email" name="email"
-									value="<?php echo $user->email ?>" />
+									value="<?php echo $user->email ?>" maxlength="50"/>
 							</div>
 						</div>
 						<div class="row">
@@ -184,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
 									</svg></span>
 								<input type="text" class="form-control" placeholder="Usuario" aria-label="Username"
 									aria-describedby="basic-addon1" id="validationDefaultUsername"
-									name="validationDefaultUsername" value="<?php echo $user->username ?>" />
+									name="validationDefaultUsername" value="<?php echo $user->username ?>" maxlength="50"/>
 							</div>
 						</div>
 						<div class="row">
@@ -205,12 +205,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
 										</svg></span>
 								<input type="password" class="form-control" placeholder="Contraseña (si se deja el campo vacío no cambia la contraseña)" aria-label="Password"
 									aria-describedby="basic-addon1" id="password"
-									name="password"/>
+									name="password" maxlength="20"/>
 							</div>
 						</div>
 					</div>
 					<div class="card-footer">
-						<button class="btn text-white" type="submit" name="btnSend">Cambiar datos</button>
+						<button class="btn boton-amarillo" type="submit" name="btnSend">Cambiar datos</button>
 					</div>
 				</form>
 			</div>
