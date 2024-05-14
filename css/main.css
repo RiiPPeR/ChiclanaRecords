@@ -16,9 +16,14 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.card, nav, footer, .input-group-text, .dropdown-toggle, table, select, option {
+.card, nav, footer, .dropdown-toggle, table, select, option {
   backdrop-filter: blur(1rem);
   background-color: rgba(59, 59, 59, 0.4)!important;
+}
+
+.input-group-text, #image.form-control {
+  backdrop-filter: blur(1rem);
+  background-color: rgba(124, 124, 124, 0.1)!important;
 }
 
 input, .progress, textarea, .dropdown-item:hover {

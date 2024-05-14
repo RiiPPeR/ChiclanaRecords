@@ -29,10 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST))
 
 	if (isset($_POST['rol'])) {
 		$rol = $_POST['rol'];
-
-		if ($rol != 1) {
-			$rol = 0;
-		} 
 	} else {
 		$rol = 0;
 	}
