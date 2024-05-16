@@ -1,4 +1,4 @@
-<footer class="text-center text-white" style="margin-top: 100px;">
+<footer class="text-center text-white" style="margin-top: 150px;">
 	<div class="container p-4 pb-0">
 
 		<section class="mb-4">
@@ -56,9 +56,12 @@
 			</div>
 			<section class="mb-4">
 				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-					repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam eum
-					harum corrupti dicta, aliquam sequi voluptate quas.
+					¡Bienvenido a Chiclana Records!
+
+					Somos tu destino definitivo para los amantes de la música en vinilo. Explora nuestra extensa colección de discos de vinilo que abarcan géneros desde el rock clásico hasta el jazz contemporáneo, pasando por el funk, el soul y mucho más.
+				</p>
+				<p>
+					Síguenos en nuestras redes sociales para estar al tanto de las últimas novedades, promociones exclusivas y recomendaciones musicales. ¡Únete a la comunidad de Chiclana Records y déjate llevar por el sonido único del vinilo!
 				</p>
 			</section>
 	</div>

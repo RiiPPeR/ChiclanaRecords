@@ -4,32 +4,18 @@ session_start();
 include './Model/User/User.php';
 include './Model/User/UserDAO.php';
 
+if (!isset($_SESSION['count'])) {
+	$_SESSION['count'] = 0;
+}
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['count'] < 3) {
+
+	$_SESSION['count']++;
+
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 
 	$userDAO = new UserDAO();
-
-	/*$conn = $userDAO->getConexion();
-
-	$sql = "SELECT * FROM " . Database::$table_prefix . "usuarios WHERE username = '$username'";
-	$result = $conn->query($sql);
-
-	// comprobamos si hay usuario
-	if ($result->num_rows > 0) {
-		// guardamos el user en una fila
-		$row = $result->fetch_assoc();
-		// comprobamos la contraseña con el hash
-		if (password_verify($password, $row["password"])) {
-			$_SESSION['user'] = $row;
-			header("Location: panel.php");
-		} else {
-			header("Location: login.php?login=password");
-		}
-	} else {
-		header("Location: login.php?login=error");
-	}*/
 
 	$user = $userDAO->getUserByUsername($username);
 
@@ -55,9 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Login</title>
+	<link rel="shortcut icon" href="./images/albums/recordcr.png" type="image/x-icon">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="javascript/script.js"></script>
 	<link rel="stylesheet" href="css/main.css" />
 </head>
 
@@ -80,6 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 								</div>
 							</div>
 							<div class="card-body pt-0 pb-0">
+								<?php if ($_SESSION['count'] === 3) : ?>
+									<div class="row">
+										<div class="col-12">
+											<div class="alert alert-danger mb-0" role="alert" id="userErrorMessage">
+												Has intentado iniciar sesión demasiadas veces!
+											</div>
+										</div>
+									</div>
+								<?php endif; ?>
 								<div class="row">
 									<div class="input-group mb-3 mt-3">
 										<span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-at" viewBox="0 0 16 16">
@@ -106,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 										</div>
 									</div>
 								</div>
-								<?php if(isset($_GET['login']) && $_GET['login'] == "error"): ?>
+								<?php if (isset($_GET['login']) && $_GET['login'] == "error") : ?>
 									<div class="row">
 										<div class="col-12">
 											<div class="alert alert-danger" role="alert" id="userErrorMessage">
@@ -115,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 										</div>
 									</div>
 								<?php endif; ?>
-								<?php if(isset($_GET['login']) && $_GET['login'] == "password"): ?>
+								<?php if (isset($_GET['login']) && $_GET['login'] == "password") : ?>
 									<div class="row">
 										<div class="col-12">
 											<div class="alert alert-danger" role="alert" id="userErrorMessage">

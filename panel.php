@@ -30,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel</title>
+    <link rel="shortcut icon" href="./images/albums/recordcr.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="javascript/script.js"></script>
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
@@ -72,6 +72,42 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                     </button>
                 </form>
 
+                <?php if (count($records) === 0) :  ?>
+
+                    <h2>Uuuuuups! Parece que no has añadido ningún disco aún.</h2>
+
+                    <article class="card d-flex flex-lg-row flex-column flex-nowrap mt-4 p-4 ps-5 transicion align-items-center align-items-lg-center container">
+                        <div class="col-lg-2 d-flex justify-content-end">
+                            <img src="./images/albums/recordcr.png" height="150" width="150" class="">
+                        </div>
+                        <div class="row col-lg-6">
+                            <div class="col-6 col-lg-7 d-flex flex-column justify-content-between ">
+                                <h2 class="ms-3">Placeholder</h2>
+                                <h3 class="ms-3">Chiclana Records</h3>
+                                <h4 class="ms-3">2024</h4>
+                            </div>
+                            <div class="col-6 col-lg-5 d-flex flex-column justify-content-evenly">
+                                <h5>---</h5>
+                                <span class="d-flex">
+                                    <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                        <span class="me-3">
+                                            <i class="bi bi-star-fill"></i>
+                                        </span>
+                                    <?php endfor; ?>
+                                </span>
+                                <p>---</p>
+                            </div>
+                        </div>
+                        <div class="row col-lg-4">
+                            <span class="col-lg-10">
+                                <p>Chiclana Records</p>
+                            </span>
+                        </div>
+
+                    </article>
+
+                <?php endif; ?>
+
 
                 <?php foreach ($records as $record) : ?>
 
@@ -102,15 +138,15 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                 <p><?= $record->tags ?></p>
                             </div>
                         </div>
-                        <div class="row col-lg-4">
+                        <div class="row col-lg-4 h-75">
                             <span class="col-lg-10">
                                 <p><?= $record->description ?></p>
                             </span>
                             <span class="col-lg-2 d-flex flex-lg-column flex-row justify-content-lg-around justify-content-center align-items-lg-left">
-                                <a class="btn btn-primary btn-azul" href="modifyRecord.php?id=<?= $record->id ?>">
+                                <a class="btn boton-azul" href="modifyRecord.php?id=<?= $record->id ?>">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a class="btn btn-danger btn-rojo" href="deleteRecord.php?id=<?= $record->id ?>">
+                                <a class="btn boton-rojo" href="deleteRecord.php?id=<?= $record->id ?>">
                                     <i class="bi bi-x-square"></i>
                                 </a>
                             </span>

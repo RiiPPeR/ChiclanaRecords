@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (contrasena !== '') {
 			if (validarContrasena(contrasena)) {
 				progressBar.classList.remove("bg-danger", "bg-warning");
-				if (validarContrasenaConEspecial(contrasena)) {
+				if (validarContrasenaConEspecial(contrasena) || porcentaje >= 70) {
 					progressBar.classList.add("bg-success")
 				} else {
 					progressBar.classList.add("bg-warning")

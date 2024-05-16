@@ -76,6 +76,11 @@
 						</svg>
 						<?= $_SESSION['user']['username'] ?>
 					</p>
+					<a href="modifiyUser.php?id=<?= $_SESSION['user']['id'] ?>">
+						<button type="submit" class="btn btn-rounded boton-azul me-3" name="buttonClose">
+							Modificar datos
+						</button>
+					</a>
 					<form method="post">
 						<button type="submit" class="btn btn-rounded boton-rojo" name="buttonClose">
 							Cerrar sesión

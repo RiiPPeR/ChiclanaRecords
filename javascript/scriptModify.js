@@ -25,8 +25,10 @@ function validarContrasena(contrasena) {
 	let regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}$/
 
 	if (!regularExpression.test(contrasena.value)) {
+		console.log('false')
 		return false
 	} else {
+		console.log('true')
 		return true
 	}
 }

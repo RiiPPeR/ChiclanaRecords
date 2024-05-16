@@ -23,7 +23,7 @@ body {
 
 .input-group-text, #image.form-control {
   backdrop-filter: blur(1rem);
-  background-color: rgba(124, 124, 124, 0.1)!important;
+  background-color: rgba(124, 124, 124, 0.4)!important;
 }
 
 input, .progress, textarea, .dropdown-item:hover {
