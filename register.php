@@ -20,9 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	//$conn = $userDAO->getConexion();
 
 	try {
-		/*$sql = "INSERT INTO " . Database::$table_prefix . "usuarios (name, surname, email, password, username) VALUES ('$nombre', '$apellido', '$email', '$hashed_password', '$username')";
-				
-		$conn->query($sql);*/
 		$userDAO->insertUser(new User(null, $nombre, $apellido, $email, $password, $username, $rol));
 		
 		if (isset($_SESSION['user']) && $_SESSION['user']['rol'] == true) {
@@ -41,8 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				//echo "Ese email ya existe.";
 				header('Location: register.php?error=email');
 			}
-
-			//echo "Ese usuario ya existe." . $e->getMessage();
 		} else {
 			echo "Ha ocurrido un error: " . $e->getMessage();
 			exit();

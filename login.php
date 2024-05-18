@@ -12,10 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['count'] < 3) {
 
 	$_SESSION['count']++;
 
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-
 	$userDAO = new UserDAO();
+
+	$username = mysqli_escape_string($userDAO->getConexion(), $_POST['username']);
+	$password = mysqli_escape_string($userDAO->getConexion(), $_POST['password']);
 
 	$user = $userDAO->getUserByUsername($username);
 

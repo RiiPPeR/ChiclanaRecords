@@ -26,12 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['userId'])) {
     if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists('btnSend', $_POST)) {
         $recordDAO = new RecordDAO();
 
-        $name = $_POST['name'];
-        $author = $_POST['author'];
-        $releaseDate = $_POST['releaseDate'];
-        $label = $_POST['label'];
-        $description = $_POST['description'];
-        $tags = $_POST['tags'];
+        $name = mysqli_escape_string($recordDAO->getConexion(), $_POST['name']);
+        $author = mysqli_escape_string($recordDAO->getConexion(), $_POST['author']);
+        $releaseDate = mysqli_escape_string($recordDAO->getConexion(),$_POST['releaseDate']);
+        $label = mysqli_escape_string($recordDAO->getConexion(),$_POST['label']);
+        $description = mysqli_escape_string($recordDAO->getConexion(),$_POST['description']);
+        $tags = mysqli_escape_string($recordDAO->getConexion(),$_POST['tags']);
         $rating = isset($_POST['rating']) ? $_POST['rating'][0] : null;
 
 /*         if (isset($_POST['rating'])) {

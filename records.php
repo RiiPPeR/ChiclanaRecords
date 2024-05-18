@@ -101,7 +101,7 @@ if ($_SESSION['user']['rol'] != true && isset($_SESSION['user'])) {
 							<td><?= $record->tags ?></td>
 							<td><?= $record->rating ?></td>
 							<td><?= $record->userId ?></td>
-							<td class="d-flex justify-content-evenly">
+							<td>
 								<a class="btn btn-primary btn-azul" href="modifyRecord.php?id=<?= $record->id ?>">
 									<i class="bi bi-pencil-square"></i>
 								</a>
